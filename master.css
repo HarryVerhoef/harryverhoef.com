@@ -4,7 +4,9 @@ html, body {
     margin: 0; padding: 0;
     background-color: #151515;
 }
-
+img, p, .container-fluid {
+    margin: 0;
+}
 #background-view {
     background: url("img/hennythingispossible.jpg") !important;
     background-repeat: no-repeat;
