@@ -38,13 +38,6 @@
 
         <div class="container-fluid align-items-center" id="biography">
             <div class="row align-items-center align-self-center biography">
-                <div class="col-3">
-                    <div class="container">
-                        <div class="row justify-content-end">
-                            <img src="https://picsum.photos/300/200" alt="lipsum">
-                        </div>
-                    </div>
-                </div>
                 <div class="col-9">
                     <div class="container">
                         <div class="row align-items-center justify-content-start">
@@ -53,10 +46,15 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-            <div class="row align-items-center biography">
 
+            <div class="row parallax-yeet">
+                <div class="parallax-img" id="school-parallax"></div>
+            </div>
+
+
+
+            <div class="row align-items-center biography">
                 <div class="col-9">
                     <div class="container">
                         <div class="row align-items-center justify-content-start">
@@ -65,15 +63,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
-                    <div class="container">
-                        <div class="row justify-content-start">
-                            <img src="https://picsum.photos/300/200" alt="lipsum">
-                        </div>
-                    </div>
-                </div>
-
             </div>
+
+            <div class="row parallax-yeet">
+                <div class="row parallax-img" id="gymming-parallax"></div>
+            </div>
+
+
 
 
         </div>
@@ -90,7 +86,8 @@
         <!-- SCRIPT -->
         <script type="text/javascript">
             $(document).ready(function() {
-                fadeTyper();
+                var lastScrollTop = 0;
+                fadeTyper($(window).scrollTop());
                 var typer = document.getElementById("typer");
                 var typewriter = new Typewriter(typer, {
                     loop: false,
@@ -103,11 +100,21 @@
                     .typeString(" Welcome to my website!")
                     .start();
 
-                $(window).scroll(fadeTyper);
+                $(window).scroll(function() {
+                    var st = $(window).scrollTop();
+                    var diff = st - lastScrollTop;
+                    var factor = 2;
+
+                    fadeTyper(st);
+
+                    $(".parallax-yeet").scrollTop($(".parallax-yeet").scrollTop() + diff);
+
+                    lastScrollTop = st;
+                });
             });
 
-            function fadeTyper() {
-                $("#typer").fadeTo(0, 1 - ($(window).scrollTop()/500));
+            function fadeTyper(st) {
+                $("#typer").fadeTo(0, Math.max(0, 1 - (st/500)));
             }
         </script>
 

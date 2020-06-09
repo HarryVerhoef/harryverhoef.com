@@ -25,7 +25,9 @@ html, body {
     padding-top: 100vh;
 }
 .biography {
+    position: relative;
     background-color: #151515;
+    z-index: 100000
 }
 .biography:first-of-type {
     -webkit-box-shadow: 0px -10px 50px 0px rgba(0,0,0,0.6);
@@ -38,4 +40,25 @@ html, body {
 }
 .bio-header {
     color: #cccccc !important;
+}
+.parallax-yeet {
+    height: 500px;
+    overflow: hidden;
+}
+.parallax-img {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    z-index: 10000;
+}
+#school-parallax {
+    background: url("https://picsum.photos/1920/1080");
+}
+#gymming-parallax {
+    background: url("https://picsum.photos/1920/1080");
 }
