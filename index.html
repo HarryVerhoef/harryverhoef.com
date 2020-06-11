@@ -29,18 +29,23 @@
 
 
         <div class="container-fluid vertical-center fixed h-100" id="background-view">
-            <div class="container-fluid align-items-center align-self-center h-100">
+            <div class="container-fluid align-self-center align-items-center justify-content-center h-100">
                 <div class="row align-items-center justify-content-center h-100">
-                    <h1 class="display-4 text-white" id="typer"></h1>
+                    <div class="col-12 align-items-center justify-content-center text-align-center" id="title-content">
+                        <h1 class="display-4 text-white" id="typer"></h1>
+                        <a class="btn btn-outline-light fade-in-down" href="#yeet" role="button" id="bio-button">Bio</a>
+                        <a class="btn btn-outline-light fade-in-down" href="#" role="button" id="github-button">Github</a>
+                    </div>
                 </div>
             </div>
         </div>
+
 
         <div class="container-fluid align-items-center" id="biography">
             <div class="row align-items-center align-self-center biography">
                 <div class="col-9">
                     <div class="container">
-                        <div class="row align-items-center justify-content-start">
+                        <div class="row align-items-center justify-content-start" id="yeet">
                             <h3 class="display-3 bio-header">Yeet</h3>
                             <p class= "bio lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et eros pulvinar, consectetur orci id, tempus nisi. Sed risus sem, fringilla eu nisl at, tristique posuere lectus. Suspendisse finibus luctus augue non facilisis. Aliquam sodales, sapien in tempor gravida, sem sapien vestibulum enim, a faucibus urna massa euismod quam. Phasellus efficitur porttitor metus, quis blandit mauris. Morbi varius eget tortor in molestie. Mauris pulvinar arcu libero, eget ultrices nunc eleifend non. Donec rhoncus massa dui, vel faucibus orci ultrices sed. Aenean nec porttitor orci. Morbi iaculis quis dui sed rutrum. Nulla quam sem, lacinia consequat posuere sed, pharetra nec mauris.</p>
                         </div>
@@ -73,6 +78,7 @@
 
 
         </div>
+        <!-- make typer and links separate and give higher z index than biography section -->
 
 
 
@@ -103,18 +109,39 @@
                 $(window).scroll(function() {
                     var st = $(window).scrollTop();
                     var diff = st - lastScrollTop;
-                    var factor = 2;
+                    var factor = 0.25;
 
                     fadeTyper(st);
 
-                    $(".parallax-yeet").scrollTop($(".parallax-yeet").scrollTop() + diff);
+                    $(".parallax-yeet").each(function() {
+                        if ($(this).offset().top < $(window).height() + st) {
+                            $(this).scrollTop($(this).scrollTop() + (diff * factor));
+                        }
+                    });
+
 
                     lastScrollTop = st;
+                });
+
+                setTimeout(function(){ $(".fade-in-down").addClass("fade-active"); }, 4750);
+
+                $("#bio-button").click(function () {
+                    $("html, body").animate({
+                        scrollTop: $("#yeet").offset().top - 200
+                    }, "slow");
                 });
             });
 
             function fadeTyper(st) {
-                $("#typer").fadeTo(0, Math.max(0, 1 - (st/500)));
+                $("#title-content").fadeTo(0, Math.max(0, 1 - (st/500)));
+
+                if ($(window).scrollTop() > 56) {
+                    $(".navbar.navbar-dark").addClass("navbar-light bg-light");
+                    $(".navbar.navbar-dark").removeClass("navbar-dark");
+                } else {
+                    $(".navbar.navbar-light").addClass("navbar-dark");
+                    $(".navbar.navbar-light").removeClass("navbar-light bg-light");
+                }
             }
         </script>
 

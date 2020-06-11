@@ -4,11 +4,30 @@ html, body {
     margin: 0; padding: 0;
     background-color: #151515;
 }
+header {
+    position: fixed;
+    z-index: 10000000;
+}
+.navbar {
+    transition: all 0.4s;
+}
 #background-view {
     background: url("img/hennythingispossible.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+}
+.text-align-center {
+    text-align: center;
+}
+.fade-in-down {
+    opacity: 0;
+    margin-top: 0;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out, opacity 2s, margin-top 1s;
+}
+.fade-in-down.fade-active {
+    opacity: 1;
+    margin-top: 30px;
 }
 .view {
     position: relative;
@@ -21,8 +40,8 @@ html, body {
 }
 #biography {
     position: relative;
-    padding-top: 100%;
-    padding-top: 100vh;
+    top: 100%;
+    top: 100vh;
 }
 .biography {
     position: relative;
