@@ -32,9 +32,9 @@
                 <div class="row align-items-center justify-content-center h-100">
                     <div class="col-12 align-items-center justify-content-center text-align-center" id="title-content">
                         <h1 class="display-4 text-white" id="typer"></h1>
-                        <a class="btn btn-outline-light fade-in-down" href="#juke" role="button" id="bio-button">Juke</a>
-                        <a class="btn btn-outline-light fade-in-down" href="#leetcode" target="_blank" role="button" id="github-button">LeetCodes</a>
-                        <a class="btn btn-outline-light fade-in-down" href="#minic" role="button" id="bio-button">MiniC Compiler</a>
+                        <a class="btn btn-outline-light fade-in-down btn-slowscroll" href="#juke" role="button">Juke</a>
+                        <a class="btn btn-outline-light fade-in-down btn-slowscroll" href="#leetcode" role="button">LeetCodes</a>
+                        <a class="btn btn-outline-light fade-in-down btn-slowscroll" href="#minic" role="button">MiniC Compiler</a>
                     </div>
                 </div>
             </div>
@@ -133,9 +133,10 @@
 
                 setTimeout(function(){ $(".fade-in-down").addClass("fade-active"); }, 1500);
 
-                $("#bio-button").click(function () {
+                $(".btn-slowscroll").click(function () {
+                    var id = $(this).attr("href");
                     $("html, body").animate({
-                        scrollTop: $("#yeet").offset().top - 200
+                        scrollTop: $(id).offset().top - 200
                     }, "slow");
                 });
             });
