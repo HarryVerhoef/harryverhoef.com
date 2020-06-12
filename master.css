@@ -81,3 +81,7 @@ header {
 #gymming-parallax {
     background: url("https://picsum.photos/1920/1080");
 }
+
+#juke-parallax, #leetcode-parallax, #minic-parallax {
+    background: url("https://picsum.photos/1920/1080");
+}
