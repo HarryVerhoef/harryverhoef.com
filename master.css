@@ -69,19 +69,14 @@ header {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     z-index: 10000;
 }
-#school-parallax {
-    background: url("https://picsum.photos/1920/1080");
+#juke-parallax {
+    background-image: url("./img/squat_2.jpg");
 }
-#gymming-parallax {
-    background: url("https://picsum.photos/1920/1080");
-}
-
-#juke-parallax, #leetcode-parallax, #minic-parallax {
-    background: url("https://picsum.photos/1920/1080");
+#leetcode-parallax {
+    background: url("./img/me.jpeg");
 }
